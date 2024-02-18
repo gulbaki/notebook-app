@@ -8,6 +8,7 @@ import {
   Req,
   Request,
   UseGuards,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
@@ -16,9 +17,10 @@ import { RegisterRequestDto } from './dto/register-request.dto';
 import { LoginResponseDTO } from './dto/login-response.dto';
 import { RegisterResponseDTO } from './dto/register-response.dto';
 import { Public } from './decorators/public.decorator';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { LoginRequestDto } from './dto/login-request.dto';
 import { User } from './decorators/user.decorator';
+import { JwtAuthGuard } from './auth.guard';
 
 @Public()
 @Controller('auth')
@@ -29,7 +31,7 @@ export class AuthController {
   @Post('login')
   @ApiBody({ type: LoginRequestDto })
   async login(
-    @Body() req: LoginRequestDto,
+    @Body(new ValidationPipe({ transform: true, whitelist: true })) req: LoginRequestDto,
   ): Promise<LoginResponseDTO | BadRequestException> {
     return this.authService.login(req);
   }
@@ -37,12 +39,14 @@ export class AuthController {
   @Post('register')
   @ApiBody({ type: RegisterRequestDto })
   async register(
-    @Body() registerBody: RegisterRequestDto,
+    @Body(new ValidationPipe({ transform: true, whitelist: true })) registerBody: RegisterRequestDto,
   ): Promise<RegisterResponseDTO | BadRequestException> {
     return await this.authService.register(registerBody);
   }
 
   @Post('logout')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   async logout(@Req() req): Promise<any> {
     const userId = req.user.userId;
     await this.authService.logout(userId);

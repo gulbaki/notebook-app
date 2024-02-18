@@ -24,16 +24,16 @@ export class NotesController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @ApiBody({ type: CreateNoteDto })
-  create(@Body() createNoteDto: CreateNoteDto, @Req() req) {
+  async create(@Body() createNoteDto: CreateNoteDto, @Req() req) {
     createNoteDto.userId = req.user.userId;
-    return this.notesService.create(createNoteDto);
+    return  await this.notesService.create(createNoteDto);
   }
 
   @Get()
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  findAll() {
-    return this.notesService.findAll();
+  async findAll() {
+    return  await this.notesService.findAll();
   }
 
   @Get(':id')
