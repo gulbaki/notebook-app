@@ -104,4 +104,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Remember to replace `https://github.com/your-username/noteapp.git` with the actual URL of your repository. Fill in the "Running the tests" section with accurate commands if your project has a testing suite. If you have a CONTRIBUTING.md or LICENSE file, make sure they're present in your repository and linked correctly.
+
