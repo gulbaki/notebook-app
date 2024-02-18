@@ -1,4 +1,3 @@
-Certainly! Based on the Swagger UI screenshot you've provided, I'll craft a README file for your NoteApp, which includes the auth and notes endpoints.
 
 ---
 
