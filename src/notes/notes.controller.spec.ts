@@ -4,7 +4,6 @@ import { NotesService } from './notes.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
 
-// Mock NotesService
 const mockNotesService = {
   create: jest.fn(),
   findAll: jest.fn(),
@@ -25,7 +24,7 @@ describe('NotesController', () => {
 
     controller = module.get<NotesController>(NotesController);
     service = module.get<NotesService>(NotesService);
-    jest.clearAllMocks(); // Clear mock calls between tests
+    jest.clearAllMocks();
   });
 
   describe('create', () => {

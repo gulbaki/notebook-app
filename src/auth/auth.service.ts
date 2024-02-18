@@ -1,16 +1,13 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service'; // Adjust the path as necessary
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/users/user.schema';
-import { AccessToken } from './types/AccessToken';
 import { RegisterRequestDto } from './dto/register-request.dto';
 import { TokenService } from './token/token.service';
 import { JwtPayload } from './jwt-payload';
 import { LoginResponseDTO } from './dto/login-response.dto';
 import { RegisterResponseDTO } from './dto/register-response.dto';
 import { LoginRequestDto } from './dto/login-request.dto';
-import mongoose from 'mongoose';
 
 @Injectable()
 export class AuthService {

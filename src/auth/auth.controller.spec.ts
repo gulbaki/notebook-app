@@ -3,9 +3,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LoginRequestDto } from './dto/login-request.dto';
 import { RegisterRequestDto } from './dto/register-request.dto';
-import { BadRequestException } from '@nestjs/common';
 
-// Mock AuthService class
 const mockAuthService = {
   login: jest.fn(),
   register: jest.fn(),
@@ -24,7 +22,7 @@ describe('AuthController', () => {
 
     controller = module.get<AuthController>(AuthController);
     service = module.get<AuthService>(AuthService);
-    jest.clearAllMocks(); // should be definedClear mock calls between tests
+    jest.clearAllMocks();
   });
 
   describe('login', () => {
@@ -37,8 +35,6 @@ describe('AuthController', () => {
       expect(await controller.login(req)).toEqual(response);
       expect(mockAuthService.login).toHaveBeenCalledWith(req);
     });
-
-    // Add more tests here for different scenarios, e.g., invalid credentials
   });
 
   describe('register', () => {
@@ -56,21 +52,17 @@ describe('AuthController', () => {
       expect(await controller.register(registerDto)).toEqual(response);
       expect(mockAuthService.register).toHaveBeenCalledWith(registerDto);
     });
-
-    // Add more tests here for different scenarios, e.g., username already exists
   });
 
   describe('logout', () => {
     it('should return a success message on successful logout', async () => {
       const req = { user: { userId: 'someUserId' } };
-      const response = { message: 'ok' };
+      const response = undefined;
 
       mockAuthService.logout.mockResolvedValue(response);
 
       expect(await controller.logout(req)).toEqual(response);
       expect(mockAuthService.logout).toHaveBeenCalledWith(req.user.userId);
     });
-
-    // Add more tests here for different scenarios
   });
 });

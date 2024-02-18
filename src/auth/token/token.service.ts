@@ -1,4 +1,4 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { sign, SignOptions, verify } from 'jsonwebtoken';
 import * as moment from 'moment';
 import { ConfigurationService } from '../../shared/configuration/configuration.service';

@@ -1,10 +1,8 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 
 @Injectable()
 export class ConfigurationService {
-  private readonly logger = new Logger('ConfigurationService');
-
   private currentEnv: string = process.env.NODE_ENV || 'development';
 
   constructor() {

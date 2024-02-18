@@ -26,14 +26,14 @@ export class NotesController {
   @ApiBody({ type: CreateNoteDto })
   async create(@Body() createNoteDto: CreateNoteDto, @Req() req) {
     createNoteDto.userId = req.user.userId;
-    return  await this.notesService.create(createNoteDto);
+    return await this.notesService.create(createNoteDto);
   }
 
   @Get()
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   async findAll() {
-    return  await this.notesService.findAll();
+    return await this.notesService.findAll();
   }
 
   @Get(':id')

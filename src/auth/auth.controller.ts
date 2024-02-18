@@ -4,11 +4,8 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
-  Param,
-  Patch,
   Post,
   Req,
-  Request,
   UnauthorizedException,
   UseGuards,
   ValidationPipe,
@@ -34,7 +31,8 @@ export class AuthController {
   @Post('login')
   @ApiBody({ type: LoginRequestDto })
   async login(
-    @Body(new ValidationPipe({ transform: true, whitelist: true })) req: LoginRequestDto,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    req: LoginRequestDto,
   ): Promise<LoginResponseDTO | BadRequestException> {
     return this.authService.login(req);
   }
@@ -45,7 +43,8 @@ export class AuthController {
   @Post('register')
   @ApiBody({ type: RegisterRequestDto })
   async register(
-    @Body(new ValidationPipe({ transform: true, whitelist: true })) registerBody: RegisterRequestDto,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    registerBody: RegisterRequestDto,
   ): Promise<RegisterResponseDTO | BadRequestException> {
     return await this.authService.register(registerBody);
   }

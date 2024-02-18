@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: JwtPayload, req: Request) {
+  async validate(payload: JwtPayload) {
     const result = await this.tokenService.validatePayload(payload);
     if (!result) {
       throw new UnauthorizedException();

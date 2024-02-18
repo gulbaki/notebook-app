@@ -3,9 +3,6 @@ import { NotesService } from './notes.service';
 import { NotesController } from './notes.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Note, NoteSchema } from './note.schema';
-import { APP_GUARD } from '@nestjs/core';
-
-import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
