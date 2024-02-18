@@ -1,0 +1,3 @@
+MONGO_URI=mongodb://127.0.0.1:27017/notebook-app
+ACCESS_TOKEN_TTL=3600
+JWT_KEY=jwt_awesome_key
