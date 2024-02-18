@@ -25,8 +25,8 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/noteapp.git
-cd noteapp
+git clone https://github.com/gulbaki/notebook-app
+cd notebook-app
 ```
 
 2. Install dependencies:
@@ -71,13 +71,13 @@ Once the server is running, you can use the following endpoints to interact with
 - **PUT /notes/{id}**: Update a note by ID.
 - **DELETE /notes/{id}**: Delete a note by ID.
 
-## Documentation
+## Swagger Documentation
 
 For more detailed API documentation, start the server and navigate to `http://localhost:3000/api` in your web browser to access the Swagger UI.
 
 ## Running the tests
 
-Explain how to run the automated tests for this system (if available).
+Explain how to run the automated tests for this system.
 
 ```bash
 npm run test
