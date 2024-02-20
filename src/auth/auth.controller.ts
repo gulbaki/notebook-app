@@ -29,6 +29,7 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: BadRequestException })
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, type: UnauthorizedException })
   @Post('login')
+  @HttpCode(200)
   @ApiBody({ type: LoginRequestDto })
   async login(
     @Body(new ValidationPipe({ transform: true, whitelist: true }))
